@@ -6,7 +6,6 @@ import numpy as np
 my_range = np.array([40, 40, 40])
 
 camera = USBCamera(0, 100, 100)
-camera.set_exposure(-100)
 window = CameraWindow("Find_HSV_ranges", camera)
 window.open()
 
