@@ -2,21 +2,62 @@ class HSV_ranges:
     """
     HSV ranges of objects that we want to track
     """
-    class Powercell:
-        """
-        Contains the HSV ranges of the powercell 
-        TODO change the HSV ranges to the front camera
-        """
-        lowH = 22
-        lowS = 115
-        lowV = 80
+    class LIFECAM_3000:
 
-        highH = 38
-        highS = 242
-        highV = 255
+        class Reflector:
+            lowH = 38
+            lowS = 142
+            lowV = 181
 
-        low = (lowH, lowS, lowV)
-        high = (highH, highS, highV)
+            highH = 118
+            highS = 222
+            highV = 255
+
+            low = (lowH, lowS, lowV)
+            high = (highH ,highS, highV)
+        class Powercell:
+            """
+            Contains the HSV ranges of the powercell 
+            """
+            lowH = 0
+            lowS = 147
+            lowV = 169
+
+            highH = 66
+            highS = 231
+            highV = 255
+
+            low = (lowH, lowS, lowV)
+            high = (highH, highS, highV)
+        
+    class MacbookPro:
+
+        class Reflector:
+            lowH = 38
+            lowS = 142
+            lowV = 181
+
+            highH = 118
+            highS = 222
+            highV = 255
+
+            low = (lowH, lowS, lowV)
+            high = (highH ,highS, highV)
+
+        class Powercell:
+            """
+            Contains the HSV ranges of the powercell 
+            """
+            lowH = 22
+            lowS = 115
+            lowV = 80
+
+            highH = 38
+            highS = 242
+            highV = 255
+
+            low = (lowH, lowS, lowV)
+            high = (highH, highS, highV)
 
 
 class Powercell:
@@ -40,6 +81,6 @@ class Cameras:
         Information about our back camera who tracks the reflective tapes
         """
         focal_length = 697.0395744431028
-        fov = 24.227745318014267895
+        fov = 53
         middle = (640, 360)
         image_total_pixels = middle[0] * 2

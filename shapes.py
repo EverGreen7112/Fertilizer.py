@@ -34,8 +34,8 @@ class Circle(Shape):
 class Rectangle(Shape):
     def __init__(self, contour):
         self.point1, self.point2 = get_rectangle_value(contour)
-        self.area = get_rect_area(point1, point2)
-        self.center = middle_of_rect(point1, point2)
+        self.area = get_rect_area(self.point1, self.point2)
+        self.center = middle_of_rect(self.point1, self.point2)
 
     def calculate_angle(self, camera) -> float:
         distance_from_center = distance_from_center__rect(self.point1, self.point2, camera.middle)
