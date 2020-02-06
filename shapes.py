@@ -20,7 +20,7 @@ class Shape:
     
     def draw(self, frame_to_draw_on, color=(0, 255, 0), thick=5):
         frame_to_draw_on = deepcopy(frame_to_draw_on)
-        cv.drawContours(frame_to_draw_on, self.contour, -1, color, thick)
+        cv.drawContours(frame_to_draw_on, [self.contour], 0, color, thick)
         return frame_to_draw_on
 
 class Circle(Shape):

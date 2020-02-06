@@ -23,7 +23,7 @@ while True:
     contours = find_contours(tresh)
     if len(contours) > 0:
         biggest_contour = max(contours, key = cv.contourArea)
-        shape = Rectangle(biggest_contour)
+        shape = Shape(biggest_contour)
         frame_to_draw = shape.draw(frame)
         rect_window.show_frame(frame_to_draw)
     tresh_window.show_frame(tresh)

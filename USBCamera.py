@@ -1,6 +1,5 @@
 import cv2 as cv
 
-
 class USBCamera(cv.VideoCapture):
     """
     a basic usb connected camera which inherits from cv VideoCapture
@@ -15,6 +14,17 @@ class USBCamera(cv.VideoCapture):
         self.port = port
         self.focal_length = focal_length
         self.fov = fov
+
+    def get_frame(self):
+        ret, frame = self.read()
+        return frame
+    
+    def get_colored_frame(self, code):
+        frame = self.get_frame()
+        if frame is None:
+            return None, None
+        coded_frame = cv.cvtColor(frame, code)
+        return coded_frame, frame
 
     def is_opened(self) -> bool:
         return self.isOpened()
