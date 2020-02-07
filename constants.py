@@ -70,7 +70,9 @@ class Reflector:
      """
     Information about the life reflectors
     """
-
+    bounding_rect_area = 0.6513 #In meters^2
+    wanted_focal_length = 367
+	
 class Cameras:
     """
     Information about cameras
