@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 from USBCamera import USBCamera
 
-class Window():
+class Window:
     """
     Simple window class who inherits to the other windows classes
     """

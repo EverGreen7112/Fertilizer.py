@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 from copy import deepcopy
+thickness = 2
 
 def find_contours(frame, mode=0, method=2) -> list:
     """
@@ -9,7 +10,7 @@ def find_contours(frame, mode=0, method=2) -> list:
     contours, hierarchy = cv.findContours(frame, mode, method)
     return contours
 
-def draw_circle(frame, center: tuple, radius: float, color=(0, 255, 0), thick=5):
+def draw_circle(frame, center: tuple, radius: float, color=(0, 255, 0), thick=thickness):
     """
     Draws a bounding cicle
     :param frame: Frame
@@ -43,7 +44,7 @@ def draw_cicle_and_return_values(frame_to_draw_on, contour):
     frame_to_draw_on = draw_circle(frame_to_draw_on, center, radius)
     return frame_to_draw_on, center, radius
 
-def draw_rectangle(frame, point1: tuple, point2: tuple, color=(0, 255, 0), thick=5):
+def draw_rectangle(frame, point1: tuple, point2: tuple, color=(0, 255, 0), thick=thickness):
     """
     Draws a bounding rectangle
     :param frame: Frame
@@ -84,7 +85,7 @@ def get_rotated_rect_value(contour):
     return points
 
 
-def draw_rotated_rect(frame, points, color=(0, 255, 0), thick=5):
+def draw_rotated_rect(frame, points, color=(0, 255, 0), thick=thickness):
     """
     Draws a bounding rectangle
     :param frame: Frame
