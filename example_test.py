@@ -1,5 +1,5 @@
-from USBCamera import *
 import cv2 as cv
+from USBCamera import *
 from window import *
 from constants import *
 from cleaning_tools import *
@@ -9,13 +9,15 @@ from shapes import *
 
 camera = USBCamera(0, Cameras.LIFECAM_3000.focal_length,
                    Cameras.LIFECAM_3000.fov)
+camera.set_width(640)
+camera.set_height(480)
 cam_window = CameraWindow("cam", camera)
 tresh_window = FeedWindow("treshhold")
 rect_window = FeedWindow("rect")
 rect_window.open()
 tresh_window.open()
 cam_window.open()
-rect_window.add_trackbar("focal_length", int(Cameras.LIFECAM_3000.focal_length), 1500, 
+rect_window.add_trackbar("focal_length", int(Cameras.LIFECAM_3000.focal_length), 1500,
                          lambda *args: None)
 
 while True:
@@ -24,15 +26,16 @@ while True:
         break
     tresh = cv.inRange(hsv_frame, HSV_ranges.LIFECAM_3000.Reflector.low,
                        HSV_ranges.LIFECAM_3000.Reflector.high)
-    tresh = median_blur(tresh, 11)
+    tresh = median_blur(tresh, 7)
     contours = find_contours(tresh)
     if len(contours) > 0:
         biggest_contour = max(contours, key=cv.contourArea)
-        shape = Rectangle(biggest_contour)
+        tmp = Shape_for_distance(biggest_contour, Reflector.real_area, 697)
+        print(str(tmp.area) + " " + str(tmp.distance))
+        shape = Shape(biggest_contour)
         distance = shape.calculate_distance(
-            0.6513, rect_window.get_trackbar_pos("focal_length"))
+            Reflector.real_area, rect_window.get_trackbar_pos("focal_length"))
         angle = shape.calculate_angle(Cameras.LIFECAM_3000)
-        print("Distance = " + str(distance) + "\n Angle = " + str(angle))
         frame_to_draw = shape.draw(frame)
         rect_window.show_frame(frame_to_draw)
     tresh_window.show_frame(tresh)

@@ -11,7 +11,7 @@ class HSV_ranges:
 
             highH = 125
             highS = 255
-            highV = 117
+            highV = 135
 
             low = (lowH, lowS, lowV)
             high = (highH ,highS, highV)
@@ -67,10 +67,12 @@ class Powercell:
     area = 0.099 #In meters
 
 class Reflector:
-     """
+    """
     Information about the life reflectors
     """
-    bounding_rect_area = 0.6513 #In meters^2
+    test_bounding_rect_area = 0.6513 #In meters^2
+    real_bounding_rect_area = 0.43215 #m^2
+    real_area = 0.07075 # m^2	
     wanted_focal_length = 367
 	
 class Cameras:
