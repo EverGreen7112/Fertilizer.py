@@ -6,6 +6,7 @@ from cleaning_tools import *
 from draw_on_frame import *
 from find_tools import *
 from shapes import *
+from filter_contours import get_biggest_filtered
 
 camera = USBCamera(0, Cameras.LIFECAM_3000.focal_length,
                    Cameras.LIFECAM_3000.fov)
@@ -29,10 +30,11 @@ while True:
     tresh = median_blur(tresh, 7)
     contours = find_contours(tresh)
     if len(contours) > 0:
-        biggest_contour = max(contours, key=cv.contourArea)
-        tmp = Shape_for_distance(biggest_contour, Reflector.real_area, 697)
-        print(str(tmp.area) + " " + str(tmp.distance))
-        shape = Shape(biggest_contour)
+        contour = get_biggest_filtered(
+            contours, Reflector.real_area, 				rect_window.get_trackbar_pos("focal_length"), 1, 7)
+        if contour is None:
+            continue
+        shape = Shape(contour)
         distance = shape.calculate_distance(
             Reflector.real_area, rect_window.get_trackbar_pos("focal_length"))
         angle = shape.calculate_angle(Cameras.LIFECAM_3000)
