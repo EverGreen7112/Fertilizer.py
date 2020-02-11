@@ -57,5 +57,6 @@ class Rectangle(Shape):
 class Shape_for_distance(Shape):
     def __init__(self, contour, original_area: float, focal_length: float):
         self.area = get_shape_area(contour)
+        self.contour = contour
         self.distance = self.calculate_distance(
             original_area, focal_length)
