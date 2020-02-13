@@ -1,8 +1,7 @@
 import cv2 as cv
-import numpy as np
-from USBCamera import USBCamera
+import VisionEG
 
-class Window():
+class Window:
     """
     Simple window class who inherits to the other windows classes
     """
@@ -25,7 +24,7 @@ class CameraWindow(Window):
     """
     A window for displaying information from a given camera
     """
-    def __init__(self, window_name: str, camera: USBCamera, exit_button='qQ'):
+    def __init__(self, window_name: str, camera: VisionEG.USBCamera, exit_button='qQ'):
         """
         Initializes the window
         :param window_name: The window's name
