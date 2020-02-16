@@ -1,2 +1,0 @@
-# VisionEG
-Vision library 

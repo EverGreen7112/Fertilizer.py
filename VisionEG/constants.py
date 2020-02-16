@@ -85,6 +85,6 @@ class Cameras:
         Information about our back camera who tracks the reflective tapes
         """
         focal_length = 697.0395744431028
-        fov = 53
-        middle = (640, 360)
+        fov = 50
+        middle = (320, 240)
         image_total_pixels = middle[0] * 2
