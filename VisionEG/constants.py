@@ -70,6 +70,7 @@ class Reflector:
     """
     Information about the life reflectors
     """
+    function_parameters = [0, 0, 0, 0, 0, 0]
     test_bounding_rect_area = 0.6513 #In meters^2
     real_bounding_rect_area = 0.43215 #m^2
     real_area = 0.07075 # m^2	

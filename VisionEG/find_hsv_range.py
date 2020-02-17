@@ -39,6 +39,6 @@ def find_hsv_range():
 
     return ranges
 
-if __name__ is '__main__':
+if __name__ == '__main__':
     print(find_hsv_range())
 

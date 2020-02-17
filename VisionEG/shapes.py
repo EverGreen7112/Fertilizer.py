@@ -25,6 +25,9 @@ class Shape:
         cv.drawContours(frame_to_draw_on, [self.contour], 0, color, thick)
         return frame_to_draw_on
 
+    def calculate_distance_with_function(self, params):
+        x = self.area
+        return params[0] + params[1]*x + params[2]*x**2 + params[3]*x**3 + params[4]*x**4 + params[5]*x**5
 
 class Circle(Shape):
     def __init__(self, contour):
@@ -53,8 +56,7 @@ class Rectangle(Shape):
 
 
 class Shape_for_distance(Shape):
-    def __init__(self, contour, original_area: float, focal_length: float):
+    def __init__(self, contour, params):
         self.area = VisionEG.get_shape_area(contour)
         self.contour = contour
-        self.distance = self.calculate_distance(
-            original_area, focal_length)
+        self.distance = self.calculate_distance_with_function(params)
