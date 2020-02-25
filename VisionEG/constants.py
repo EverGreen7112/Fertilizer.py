@@ -5,13 +5,13 @@ class HSV_ranges:
     class LIFECAM_3000:
 
         class Reflector:
-            lowH = 45
-            lowS = 200
-            lowV = 29
+            lowH = 52
+            lowS = 87
+            lowV = 19
 
-            highH = 125
+            highH = 99
             highS = 255
-            highV = 135
+            highV = 255
 
             low = (lowH, lowS, lowV)
             high = (highH ,highS, highV)
