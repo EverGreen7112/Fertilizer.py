@@ -1,3 +1,5 @@
+import sys
+sys.path.append('..')
 import VisionEG
 import cv2 as cv
 import numpy as np
@@ -15,7 +17,6 @@ def find_hsv_range():
         return frame[y:y + h, x:x + w]
 
     med = None
-
     while True:
         HSV_frame, frame = window.show_and_get_color_frame(cv.COLOR_BGR2HSV)
         if frame is None:
@@ -37,8 +38,6 @@ def find_hsv_range():
             num = min(255, max(0, num))
             tmp_range[i] = num
 
-    return ranges
+    print(ranges)
 
-if __name__ == '__main__':
-    print(find_hsv_range())
-
+find_hsv_range()

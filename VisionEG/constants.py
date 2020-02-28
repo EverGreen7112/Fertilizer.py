@@ -3,18 +3,30 @@ class HSV_ranges:
     HSV ranges of objects that we want to track
     """
     class LIFECAM_3000:
+        class ReflectorTest:
+            lowH = 46
+            lowS = 215
+            lowV = 51
 
-        class Reflector:
-            lowH = 52
-            lowS = 87
-            lowV = 19
-
-            highH = 99
+            highH = 126
             highS = 255
-            highV = 255
+            highV = 131
 
             low = (lowH, lowS, lowV)
             high = (highH ,highS, highV)
+
+        class Reflector:
+            lowH = 45
+            lowS = 200
+            lowV = 29
+
+            highH = 125
+            highS = 255
+            highV = 165
+
+            low = (lowH, lowS, lowV)
+            high = (highH ,highS, highV)
+
         class Powercell:
             """
             Contains the HSV ranges of the powercell 
@@ -70,7 +82,7 @@ class Reflector:
     """
     Information about the life reflectors
     """
-    function_parameters = [0, 0, 0, 0, 0, 0]
+    function_parameters = [12.3368, -0.0172456, 0.0000138633, -0.00000000587894, 0.0000000000012544, -0.000000000000000107002]
     test_bounding_rect_area = 0.6513 #In meters^2
     real_bounding_rect_area = 0.43215 #m^2
     real_area = 0.07075 # m^2	

@@ -7,6 +7,10 @@ import os
 NetworkTables.initialize(server='10.71.12.2')
 table = NetworkTables.getTable('SmartDashboard')
 
+
+#window = veg.FeedWindow("window")
+#window.open()
+
 def set_default():
     table.putNumber("Distance", -1)
     table.putNumber("Angle", 360)
@@ -23,26 +27,31 @@ while True:
     #Check if "StopVision" is True, if yes it shutdowns the Jetson
     if table.getBoolean("StopVision", False):
         os.system("sudo shutdown -h now")
-
+    
     #Gets the frame and the coded frame from the camera, if the frame is none, CameraInput is set to False
     hsv_frame, frame = camera.get_colored_frame(cv.COLOR_BGR2HSV)
+    #window.show_frame(frame)
     if frame is None:
         table.putBoolean("CameraInput", False)
         continue
     table.putBoolean("CameraInput", True)
 
     #Treshholds the frame and cleans it with median_blur function
-    tresh = cv.inRange(hsv_frame, veg.HSV_ranges.MacbookPro.Powercell.low,
-                       veg.HSV_ranges.MacbookPro.Powercell.high)
+    tresh = cv.inRange(hsv_frame, veg.HSV_ranges.LIFECAM_3000.Reflector.low,
+                       veg.HSV_ranges.LIFECAM_3000.Reflector.high)
     tresh = veg.median_blur(tresh, 7)
+
+    #window.show_frame(tresh)
+
 
     #Finds the contours in the image
     contours = veg.find_contours(tresh)
-
+    
     if len(contours) > 0:
         #Filter the contours, checks if the distance from the contour is between 2 and 7 if yes, it returns the biggest contour, else returns None
-        contour = veg.get_biggest_filtered(
-            contours, veg.Reflector.function_parameters, 2, 7)
+        #contour = veg.get_biggest_filtered(
+         #   contours, veg.Reflector.function_parameters, 2, 7)
+        contour = veg.biggest_contour(contours)
         if contour is None:
             set_default()
             continue
@@ -51,7 +60,7 @@ while True:
         shape = veg.Shape(contour)
         distance = shape.calculate_distance_with_function(veg.Reflector.function_parameters)
         angle = shape.calculate_angle(veg.Cameras.LIFECAM_3000)
-
+        #print(angle)
         #Puts the values at the networktable
         table.putBoolean("SeePowerPort", True)
         table.putNumber("Distance", distance)
@@ -59,5 +68,3 @@ while True:
 
     else:
         set_default()
-    
-    
