@@ -75,7 +75,7 @@ class Reflector:
     real_bounding_rect_area = 0.43215 #m^2
     real_area = 0.07075 # m^2	
     wanted_focal_length = 367
-    center_height = 0 #In meters TODO calibrate
+    center_height = 2.28 #In meters TODO calibrate
 	
 class Cameras:
     """
@@ -88,9 +88,9 @@ class Cameras:
         """
         focal_length = 697.0395744431028
         fov = 50
-        vertical_fov = 0 #TODO calibrate
+        vertical_fov = 37 #TODO calibrate
         middle = (320, 240)
         image_total_pixels = middle[0] * 2
         image_total_vertical_pixels[1] * 2
-        height = 0 #In meters TODO calibrate
-        angle = 0 #TODO calibrate
+        height = 0.47 #In meters TODO calibrate
+        angle = 30 #TODO calibrate

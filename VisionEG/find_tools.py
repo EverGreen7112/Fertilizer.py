@@ -22,7 +22,7 @@ def find_distance_new_function(object_height: float, camera_height: float, camer
     :param camera_vertical_angle: The vertical angle of the camera
     :param vertical_angle_from_object: The angle between the camera and the object
     """
-    return (object_height - camera_height) / (math.tan(vertical_angle_from_object + camera_vertical_angle))
+    return (object_height - camera_height) / (math.tan(math.radians(vertical_angle_from_object + camera_vertical_angle)))
 
 def find_angle(distance_from_center: float, camera_fov: float, image_total_pixels: int) -> float:
     """
