@@ -6,12 +6,12 @@ class HSV_ranges:
 
         class Reflector:
             lowH = 45
-            lowS = 200
-            lowV = 29
+            lowS = 215
+            lowV = 75
 
-            highH = 125
+            highH = 126
             highS = 255
-            highV = 135
+            highV = 155
 
             low = (lowH, lowS, lowV)
             high = (highH ,highS, highV)
@@ -74,7 +74,6 @@ class Reflector:
     test_bounding_rect_area = 0.6513 #In meters^2
     real_bounding_rect_area = 0.43215 #m^2
     real_area = 0.07075 # m^2	
-    wanted_focal_length = 367
     center_height = 2.28 #In meters TODO calibrate
 	
 class Cameras:
@@ -91,6 +90,6 @@ class Cameras:
         vertical_fov = 37 #TODO calibrate
         middle = (320, 240)
         image_total_pixels = middle[0] * 2
-        image_total_vertical_pixels[1] * 2
-        height = 0.47 #In meters TODO calibrate
-        angle = 30 #TODO calibrate
+        image_total_vertical_pixels = middle[1] * 2
+        height = 0.47  # In meters TODO calibrate
+        angle = 30  # TODO calibrate

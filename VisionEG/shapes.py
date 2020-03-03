@@ -11,7 +11,7 @@ class Shape:
     def calculate_distance(self, object_height: float, camera_height: float, camera_vertical_angle: float, camera_vertical_fov: float, center_of_image: tuple) -> float:
         image_total_vertical_pixels = center_of_image[1] * 2
         vertical_distance_from_center = VisionEG.vertical_distance_from_center(self.center, center_of_image)
-        vertical_angle = VisionEG.find_vertical_angle(vertical_distance_from_center, camera_horizontal_fov, image_total_horizontal_pixels)
+        vertical_angle = VisionEG.find_vertical_angle(vertical_distance_from_center, camera_vertical_fov, image_total_vertical_pixels)
         distance = VisionEG.find_distance_new_function(object_height, camera_height, camera_vertical_angle, vertical_angle)
         return distance
 

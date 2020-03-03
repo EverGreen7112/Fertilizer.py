@@ -4,6 +4,7 @@ import numpy as np
 import cv2 as cv
 import VisionEG as veg
 
+
 def find_fov(bbox, dimension, z, camera_dimension):
     return [np.arctan(dimension[i] / z) * camera_dimension[i] / bbox[i + 2] for i in range(2)]
 
