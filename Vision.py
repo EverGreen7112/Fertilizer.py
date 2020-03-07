@@ -7,8 +7,8 @@ import os
 NetworkTables.initialize(server='10.71.12.2')
 table = NetworkTables.getTable('SmartDashboard')
 
-#window = veg.FeedWindow("window")
-#window.open()
+window = veg.FeedWindow("window")
+window.open()
 
 low_hsv_range = (table.getNumber("lowh", veg.HSV_ranges.LIFECAM_3000.Reflector.lowH),
                  table.getNumber("lows", veg.HSV_ranges.LIFECAM_3000.Reflector.lowS),
@@ -27,8 +27,7 @@ def set_default():
 # Camera
 camera = veg.USBCamera(0, veg.Cameras.LIFECAM_3000.focal_length,
                        veg.Cameras.LIFECAM_3000.fov)
-window = veg.CameraWindow("Vision", camera)
-window.open()
+
 camera.set_width(640)
 camera.set_height(480)                                           
 
@@ -43,7 +42,7 @@ while True:
 
     # Gets the frame and the coded frame from the camera, if the frame is none, CameraInput is set to False
     hsv_frame, frame = camera.get_colored_frame(cv.COLOR_BGR2HSV)
-    #window.show_frame(frame)
+
     if frame is None:
         table.putBoolean("CameraInput", False)
         continue
@@ -66,9 +65,7 @@ while True:
     contours = veg.find_contours(tresh)
 
     if len(contours) > 0:
-        # Filter the contours, checks if the distance from the contour is between 2 and 7 if yes, it returns the
-        # biggest contour, else returns None contour = veg.get_biggest_filtered( contours,
-        # veg.Reflector.function_parameters, 2, 7)
+        # Filter the contours, takes the biggest contour
         contour = veg.biggest_contour(contours)
         if contour is None:
             set_default()
